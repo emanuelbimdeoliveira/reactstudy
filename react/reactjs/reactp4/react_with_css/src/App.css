@@ -1,0 +1,58 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+}
+
+table {
+  width: 80%;
+  margin: 5% auto;
+  background: #335;
+  color: white;
+  border-collapse: collapse;
+}
+
+tr:nth-of-type(2n) {
+  background: #88a;
+}
+
+td, th {
+  border: solid 3px black;
+  text-align: left;
+  padding: 1%;
+}
+
+form {
+  background: #88a;
+  border-radius: 10px;
+  margin: 2% auto;
+  padding: 2%;
+  text-align: left;
+}
+
+label {
+  display: block;
+}
+
+input {
+  background: transparent;
+  color: black;
+  border: 2px solid;
+  border-radius: 3px;
+  outline: 0;
+}
+
+button {
+  background: #335;
+  margin: 3% auto;
+  padding: 1%;
+  border-radius: 5px;
+  font-size: 1.2em;
+  border: none;
+  outline: none;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
