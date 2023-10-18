@@ -2,3 +2,18 @@
 body {
     background-color: crimson;
 }
+
+@keyframes spinner {
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+.spinner-border {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: solid 5px black;
+    border-top: 0;
+    animation: spinner 1s linear infinite;
+}

@@ -9,25 +9,23 @@ function App() {
 
   const url = "http://localhost:3000/colors";
 
-  const { data, config } = useFetch(url);
+  const { data, httpConfig, loading } = useFetch(url);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const newColorObject = {}
     newColorObject.color = newColor;
 
-    const fetchRequestSend = async () => {
-      const responseSend = await fetch(url, config);
-      console.log({responseSend})
-    }
-    fetchRequestSend();
+    httpConfig(newColorObject, "POST");
   }
+  
 
   return (
     <>
       <h1>Http react</h1>
+      {loading && <p className='spinner-border'></p>}
       {
-        data && data.map((item, index) => (
+        (!loading && data) && data.map((item, index) => (
           <p style={{background: item.color}} key={index}>{item.color}</p>
         ))
       }

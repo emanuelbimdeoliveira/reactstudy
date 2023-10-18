@@ -90,12 +90,48 @@
       }
     },
     {
-      "color": "crimson",
+      "color": "gray",
       "id": 6
     },
     {
-      "color": "lightskyblue",
-      "id": 7
+      "color": "orange",
+      "id": 9
+    },
+    {
+      "color": "light",
+      "id": 10
+    },
+    {
+      "color": "dark",
+      "id": 11
+    },
+    {
+      "color": "salmom",
+      "id": 12
+    },
+    {
+      "color": "darkred",
+      "id": 13
+    },
+    {
+      "color": "darkred",
+      "id": 14
+    },
+    {
+      "color": "#f80",
+      "id": 15
+    },
+    {
+      "color": "#f80",
+      "id": 16
+    },
+    {
+      "color": "#f80",
+      "id": 17
+    },
+    {
+      "color": "darkblue",
+      "id": 18
     }
   ]
 }
