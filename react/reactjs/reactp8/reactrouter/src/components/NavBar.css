@@ -1,0 +1,19 @@
+
+nav {
+    background: #222;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: calc(1px + 20%);
+    margin: auto;
+  }
+
+.links {
+    color: white;
+    text-decoration: none;
+}
+
+.links:hover {
+    text-decoration: underline;
+} 
+

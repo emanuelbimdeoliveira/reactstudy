@@ -1,137 +1,24 @@
 {
   "colors": [
     {
-      "id": 0,
-      "color": "black",
-      "category": "hue",
-      "type": "primary",
-      "code": {
-        "rgba": [
-          255,
-          255,
-          255,
-          1
-        ],
-        "hex": "#000"
-      }
-    },
-    {
-      "id": 1,
-      "color": "white",
-      "category": "value",
-      "code": {
-        "rgba": [
-          0,
-          0,
-          0,
-          1
-        ],
-        "hex": "#FFF"
-      }
-    },
-    {
-      "id": 2,
-      "color": "red",
-      "category": "hue",
-      "type": "primary",
-      "code": {
-        "rgba": [
-          255,
-          0,
-          0,
-          1
-        ],
-        "hex": "#FF0"
-      }
-    },
-    {
-      "id": 3,
-      "color": "blue",
-      "category": "hue",
-      "type": "primary",
-      "code": {
-        "rgba": [
-          0,
-          0,
-          255,
-          1
-        ],
-        "hex": "#00F"
-      }
-    },
-    {
-      "id": 4,
-      "color": "yellow",
-      "category": "hue",
-      "type": "primary",
-      "code": {
-        "rgba": [
-          255,
-          255,
-          0,
-          1
-        ],
-        "hex": "#FF0"
-      }
-    },
-    {
-      "id": 5,
-      "color": "green",
-      "category": "hue",
-      "type": "secondary",
-      "code": {
-        "rgba": [
-          0,
-          255,
-          0,
-          1
-        ],
-        "hex": "#0F0"
-      }
-    },
-    {
       "color": "gray",
       "id": 6
-    },
-    {
-      "color": "orange",
-      "id": 9
-    },
-    {
-      "color": "light",
-      "id": 10
-    },
-    {
-      "color": "dark",
-      "id": 11
-    },
-    {
-      "color": "salmom",
-      "id": 12
-    },
-    {
-      "color": "darkred",
-      "id": 13
     },
     {
       "color": "darkred",
       "id": 14
     },
     {
-      "color": "#f80",
-      "id": 15
+      "color": "#80a",
+      "id": 24
     },
     {
-      "color": "#f80",
-      "id": 16
+      "color": "#aab",
+      "id": 26
     },
     {
-      "color": "#f80",
-      "id": 17
-    },
-    {
-      "color": "darkblue",
-      "id": 18
+      "color": "hsl(30, 100%, 50%)",
+      "id": 34
     }
   ]
 }

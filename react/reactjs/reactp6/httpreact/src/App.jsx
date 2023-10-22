@@ -23,18 +23,26 @@ function App() {
   return (
     <>
       <h1>Http react</h1>
-      {loading && <p className='spinner-border'></p>}
+      {loading && <p className='spinner-border'></p>}          
       {
         (!loading && data) && data.map((item, index) => (
-          <p style={{background: item.color}} key={index}>{item.color}</p>
+          <p style={{background: item.color}} key={index}>{item.color} = {item.id} <span onClick={() => {
+            httpConfig(item.id, "DELETE");
+          }}>Delete</span></p>
         ))
       }
+      {!data && <p>Ocorreu um erro!</p>}
       <form onSubmit={handleSubmit}>
         <label>
           <span>Adicione uma nova Cor:</span>
           <input type="text" onChange={(event) => {setNewColor(event.target.value)}} value={newColor}/>
         </label>
-        <input type="submit" value="Nova Cor" />
+        {loading ? (
+            <input type="submit" value="Aguarde um momento!" disabled/>
+          ) : (
+            <input type="submit" value="Nova Cor" />
+          )
+          }
       </form>
     </>
   )

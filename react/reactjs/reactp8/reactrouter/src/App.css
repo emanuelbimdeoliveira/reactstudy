@@ -1,0 +1,8 @@
+#root {
+  width: 100%;
+  max-width: 900px;
+  margin: 1% auto;
+  background-color: #ccd;
+  padding: 2% 5%;
+  border-radius: 10px;
+}

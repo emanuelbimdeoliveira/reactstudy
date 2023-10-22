@@ -13,7 +13,6 @@ function App() {
       const data = await response.json();
   
       setProducts(data)
-      console.log(data)  
     }
 
     fetchRequest();
@@ -30,12 +29,10 @@ function App() {
       const responseSend = await fetch(url, {
         method: "POST",
         headers: {
-          // "Accept": "application/json",
           "Content-Type": "application/json"
         },
         body: JSON.stringify(newProductObject),
       });
-      console.log({responseSend})
     }
     fetchRequestSend();
   }

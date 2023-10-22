@@ -1,0 +1,15 @@
+ 
+ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+li {
+    background: white;
+    width: 90%;
+    margin: auto;
+    padding: 2%;
+    border-radius: 5px;
+}
