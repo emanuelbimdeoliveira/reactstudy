@@ -1,0 +1,33 @@
+:root {
+  --blue-1: hsl(60, 100%, 35%);
+  --orange-1: #7f0;
+  --orange-2: #5f0;
+}
+
+body {
+  background: #ddf;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-top: 1%;
+}
+
+header {
+  background: var(--blue-1);
+  width: 100%;
+  padding: 2% 0;
+  color: var(--orange-2);
+  font-size: 2em;
+  text-shadow: 2px 2px 0 black;
+}
+
+main {
+  background: white;
+  padding: 1%;
+}
+
+button {
+  background: linear-gradient(0deg, var(--orange-1), var(--orange-2));
+  border-radius: 10px;
+  padding: 1%;
+  font-size: 1.1em;
+}

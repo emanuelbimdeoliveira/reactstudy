@@ -1,0 +1,14 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h2 {
+  background: var(--blue-1);
+  padding: 5%;
+  color: var(--orange-2);
+  font-size: 2em;
+  text-shadow: 2px 2px 0 black;
+}
+
