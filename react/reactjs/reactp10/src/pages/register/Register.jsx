@@ -33,7 +33,6 @@ const Register = () => {
         }
         
         await createUser(user);
-        
     }
     
     useEffect(() => {

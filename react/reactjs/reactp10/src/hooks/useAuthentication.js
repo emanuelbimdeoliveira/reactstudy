@@ -52,9 +52,29 @@ export const useAuthentication = () => {
         signOut(userToLogOut);
     }
 
+    const loginUser = async (userToLogin) => {
+        ifIsCancelled();
+
+        setLoading(true);        
+        setError(null);
+
+        try {
+            await signInWithEmailAndPassword(auth, userToLogin.email, userToLogin.password);
+        } catch (error) {
+            console.log(error)
+            if (error) {
+                setError("Algo deu errado.")
+            } else if (error.includes("INVALID_LOGIN_CREDENTIALS")) {
+                setError("Senha errada.")
+            }
+        }
+
+        setLoading(false);
+    }
+
     useEffect(() => {
         return () => setCancelled(true)
     }, [])
 
-    return {auth, createUser, logOut, error, loading}
+    return {auth, createUser, loginUser, logOut, error, loading}
 }
