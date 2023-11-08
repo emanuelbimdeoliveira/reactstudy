@@ -1,15 +1,18 @@
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom"  
 import { useAddPost } from '../../hooks/useAddPost';
 import { useAuthContext } from '../../context/AuthContext';
 
 import styles from "./NewPost.module.css"
 
 const NewPost = () => {
+  // states
   const [title, setTitle] = useState("");
   const [urlImage, setUrlImage] = useState("");
   const [content, setContent] = useState("");
   const [tags, setTags] = useState("");
+  const [error, setError] = useState(null)
 
   // context destructuring
   const {user} = useAuthContext();
@@ -17,10 +20,30 @@ const NewPost = () => {
   // hook destructuring
   const {addPost, state} = useAddPost("posts");
 
+  // redirect to home
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     
     state.error = "";
+    setError(null)
+
+    // validate img
+    try {
+      new URL(urlImage);
+    } catch (error) {
+      return state.error = "URL inválida";
+    }
+    if (state.error) return;
+    
+    // arrange tags
+    setTags((tags) => {
+      return tags = tags.split(",").map((item) => {return item.trim().toLowerCase()})
+    })
+
+    if (!title || !urlImage || !content || !tags) return setError("Algo deu errado!");
+
     const post = {
       title, 
       urlImage,
@@ -31,7 +54,13 @@ const NewPost = () => {
     }
     
     addPost(post);
+
+    navigate("/");
   }
+
+  useEffect(() => {
+    setError(state.error);
+  }, [state.error])
 
   return (
     <section>
@@ -94,8 +123,7 @@ const NewPost = () => {
         {!state.loading && <input type="submit" value="Postar" />}
         {state.loading && <input type="submit" disabled value="Aguarde..." />}
       </form>
-      {state.error && <p className='danger'>{state.error}</p>}
-
+      {error && <p className='danger'>{error}</p>}
     </section>
     
   )

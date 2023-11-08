@@ -6,8 +6,8 @@ import { NavLink } from 'react-router-dom'
 import "./NavBar.css"
 
 // hooks
-import { useAuthentication } from '../hooks/useAuthentication'
-import { useAuthContext } from '../context/AuthContext'
+import { useAuthentication } from '../../hooks/useAuthentication'
+import { useAuthContext } from '../../context/AuthContext'
 
 const NavBar = () => {
     const {user} = useAuthContext();
