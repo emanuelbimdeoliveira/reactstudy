@@ -1,5 +1,5 @@
 // hooks
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 // custom hooks
@@ -19,12 +19,15 @@ const Home = () => {
 
   const {user} = useAuthContext();
 
-  const {getPost, documents: posts, loading, error} = useGetPosts("posts");
-  const {searchPost} = useSearchPost(searchTags);
+  const navigate = useNavigate();
+  const {getPost, documents: posts, loading, error} = useGetPosts("posts", searchTags);
 
   const handleSearch = (event) => {
     event.preventDefault();
-    searchPost(searchTags);
+
+    if (searchTags) {
+      navigate(`/search?q=${searchTags}`);
+    }
   }
 
   return (
@@ -57,7 +60,7 @@ const Home = () => {
                      title={item.title}
                      content={item.content}
                      userName={item.userName}
-                     createdAt={item.createdAt}/>
+                     tags={item.tags}/>
                   </li>
                 ))}
               </ul>

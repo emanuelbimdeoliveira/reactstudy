@@ -42,8 +42,9 @@ const NewPost = () => {
       return tags = tags.split(",").map((item) => {return item.trim().toLowerCase()})
     })
 
+    
     if (!title || !urlImage || !content || !tags) return setError("Algo deu errado!");
-
+    
     const post = {
       title, 
       urlImage,
@@ -54,13 +55,15 @@ const NewPost = () => {
     }
     
     addPost(post);
-
+    
+    console.log(tags)
     navigate("/");
   }
-
+  
   useEffect(() => {
     setError(state.error);
   }, [state.error])
+  
 
   return (
     <section>

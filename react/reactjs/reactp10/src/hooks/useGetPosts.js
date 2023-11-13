@@ -5,12 +5,12 @@ import { db } from "../firebase/config";
 import { collection, query, orderBy, onSnapshot, where} from "firebase/firestore";
 
 
-export const useGetPosts = (docCollection) => {
+export const useGetPosts = (docCollection, search) => {
     const [documents, setDocuments] = useState(null);
     const [loading, setLoading] = useState(null);
     const [error, setError] = useState(null);
 
-    const getPost = async (search = null) => {
+    const getPost = async () => {
         setLoading(true);
         setError(null);
 
@@ -20,6 +20,7 @@ export const useGetPosts = (docCollection) => {
         try {
             if (search) {
                 querySearch = await query(collectionRef, where("tags", "array-contains", search), orderBy("title", "asc"));
+                console.log(querySearch)
             } else {
                 querySearch = await query(collectionRef, orderBy("title", "asc"));
             }
@@ -30,16 +31,17 @@ export const useGetPosts = (docCollection) => {
                         id: item.id,
                         ...item.data()
                     })));
-            });
-        } catch (error) {
-            setError(error.message);
+                });
+            } catch (error) {
+                setError(error.message);
+            }
+            setLoading(false);
         }
-        setLoading(false);
-    }
-    
-    useEffect(() => {
-        getPost();
-    }, [collection, query, docCollection])    
-    
+        
+        useEffect(() => {
+            getPost();
+        }, [collection, query, docCollection])    
+        
+        console.log(documents)
     return { getPost, documents, loading, error };
 }

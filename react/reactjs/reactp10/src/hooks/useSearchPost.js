@@ -1,14 +1,11 @@
-import { useNavigate } from "react-router-dom"
+import { useLocation } from "react-router-dom"
+// import { useMemo } from "react"
+import { useSearchParams } from "react-router-dom";
 
-import { useLocation } from 'react-router-dom'
+export const useSearchPost = () => {
+    const searchParams = useLocation();
+    const [querySearch] = useSearchParams(searchParams);
 
-
-export const useSearchPost = (query) => {
-    const navigate = useNavigate();
-
-    const searchPost = () => {
-        navigate(`/search?q=${query}`);
-    }
-
-    return { searchPost };
+    return querySearch; 
+    // return useMemo(() => new URLSearchParams(querySearch), [querySearch])
 }
