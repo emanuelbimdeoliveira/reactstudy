@@ -14,13 +14,13 @@ import styles from "../home/Home.module.css"
 
 const Search = () => {
   const url = useSearchPost();
-  const urlParams = url.get("q");
+  const urlSearchParams = url.get("q");
   
-  const {getPost, documents: posts, loading, error} = useGetPosts("posts", urlParams);
+  const {getPost, documents: posts, loading, error} = useGetPosts("posts", urlSearchParams);
 
   return (
     <>
-      <h1>{urlParams}</h1>
+      <h1>{urlSearchParams}</h1>
       {posts && posts.length !== 0 ? (
               <ul className={styles.ul}>
                 {posts.map((item) => (

@@ -1,8 +1,8 @@
+import { Link } from "react-router-dom";
+
 import styles from "./ShowPost.module.css";
 
-import React from 'react'
-
-const ShowPost = ({img, title, content, userName, tags}) => {
+const ShowPost = ({img, title, content, userName, tags, id}) => {
 
   return (
     <div className={styles.container}>
@@ -11,6 +11,7 @@ const ShowPost = ({img, title, content, userName, tags}) => {
         <h3>Criado por {userName}</h3>
         <p>{content}</p>
         <p>{tags}</p>
+        <Link to={`/post/${id}`}>Ler</Link>
     </div>
   )
 }

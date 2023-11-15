@@ -1,12 +1,16 @@
 
 import { useState, useEffect } from 'react'
-import { useNavigate } from "react-router-dom"  
-import { useAddPost } from '../../hooks/useAddPost';
+import { useNavigate, useParams } from "react-router-dom"  
+
+// custom hooks
+import { useGetPosts } from '../../hooks/useGetPosts';
+
+// context
 import { useAuthContext } from '../../context/AuthContext';
 
-import styles from "./NewPost.module.css"
+import styles from "../newpost/NewPost.module.css"
 
-const NewPost = () => {
+const PostEdit = () => {
   // states
   const [title, setTitle] = useState("");
   const [urlImage, setUrlImage] = useState("");
@@ -15,33 +19,40 @@ const NewPost = () => {
   const [error, setError] = useState(null)
 
   // context destructuring
-  const {user} = useAuthContext();
+  const { user } = useAuthContext();
+  const { id } = useParams();
   
   // hook destructuring
-  const {addPost, state} = useAddPost("posts");
+  const {getPosts, documents: post, loading} = useGetPosts("posts", null, null, id);
 
+  useEffect(() => {
+    if (post) {
+       // settings states
+       setTitle(post.title);
+       setUrlImage(post.urlImage);
+       setContent(post.content);
+       setTags(post.tags);
+    }  
+  }, [post])
+  
   // redirect to home
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     
-    state.error = "";
     setError(null)
 
     // validate img
     try {
       new URL(urlImage);
     } catch (error) {
-      return state.error = "URL inválida";
     }
-    if (state.error) return;
     
     // arrange tags
     setTags((tags) => {
       return tags.split(",").map((item) => {return item.replace("#", "").trim().toLowerCase()})
     })
-    console.log(tags)
     
     if (!title || !urlImage || !content || !tags) return setError("Algo deu errado!");
     
@@ -54,20 +65,12 @@ const NewPost = () => {
       userName: user.displayName
     }
     
-    addPost(post);
-    
-    console.log(tags)
     navigate("/");
-  }
-  
-  useEffect(() => {
-    setError(state.error);
-  }, [state.error])
-  
+  }  
 
   return (
     <section>
-      <h1>NewPost</h1>
+      <h1>PostEdit</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
         <fieldset className={styles.fieldset}>
           <label>
@@ -94,7 +97,9 @@ const NewPost = () => {
               placeholder='Adicione uma URL'
               required
               onChange={(event) => {setUrlImage(event.target.value)}}
-              />
+            />
+            <p>Imagem Atual:</p>
+            {post && <img src={post.urlImage} alt={post.title} />}
           </label>
           <label>
             <span>Conteúdo</span>
@@ -123,8 +128,8 @@ const NewPost = () => {
               />
           </label>
         </fieldset>
-        {!state.loading && <input type="submit" value="Postar" />}
-        {state.loading && <input type="submit" disabled value="Aguarde..." />}
+        {!loading && <input type="submit" value="Editar" />}
+        {loading && <input type="submit" disabled value="Aguarde..." />}
       </form>
       {error && <p className='danger'>{error}</p>}
     </section>
@@ -132,4 +137,4 @@ const NewPost = () => {
   )
 }
 
-export default NewPost
+export default PostEdit

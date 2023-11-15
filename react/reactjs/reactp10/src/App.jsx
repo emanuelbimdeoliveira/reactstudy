@@ -20,6 +20,8 @@ import Login from "./pages/login/Login"
 import Register from "./pages/register/Register"
 import DashBoard from "./pages/dashboard/DashBoard"
 import NewPost from "./pages/newpost/NewPost"
+import IndividualPost from "./pages/individualpost/IndividualPost"
+import PostEdit from "./pages/postedit/PostEdit"
 
 import './App.css'
 import Search from "./pages/search/Search"
@@ -55,6 +57,8 @@ function App() {
               <Route path="/search" element={<Search />}/>
               <Route path="/dashboard" element={!user ? (<Navigate to={"/register"} />) : (<DashBoard />)}/>
               <Route path="/newpost/create" element={!user ? (<Navigate to={"/register"} />) : (<NewPost />)}/>
+              <Route path="/post/:id" element={!user ? (<Navigate to={"/"}/>) : (<IndividualPost />)}/>
+              <Route path="/post/edit/:id" element={!user ? (<Navigate to={"/"}/>) : (<PostEdit />)}/>
             </Routes>
           </main>
         </BrowserRouter>

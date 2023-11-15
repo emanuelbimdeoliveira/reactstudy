@@ -42,7 +42,7 @@ const Home = () => {
                 <input 
                   type="text"
                   className={styles.input}
-                  placeholder='Pesquisar por Tags'
+                  placeholder='Pesquisar por Título'
                   onChange={(event) => {setSearchTags(event.target.value)}}
                   value={searchTags} 
                 />
@@ -60,7 +60,9 @@ const Home = () => {
                      title={item.title}
                      content={item.content}
                      userName={item.userName}
-                     tags={item.tags}/>
+                     tags={item.tags}
+                     id={item.id}
+                     />
                   </li>
                 ))}
               </ul>
