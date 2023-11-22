@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom"
 
 // custom hooks
 import { useGetPosts } from '../../hooks/useGetPosts';
+import { useEditPost } from '../../hooks/useEditPost';
 
 // context
 import { useAuthContext } from '../../context/AuthContext';
@@ -24,6 +25,7 @@ const PostEdit = () => {
   
   // hook destructuring
   const {getPosts, documents: post, loading} = useGetPosts("posts", null, null, id);
+  const { editPost, state } = useEditPost("posts", id);
 
   useEffect(() => {
     if (post) {
@@ -38,7 +40,7 @@ const PostEdit = () => {
   // redirect to home
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleEditPost = (event) => {
     event.preventDefault();
     
     setError(null)
@@ -47,11 +49,12 @@ const PostEdit = () => {
     try {
       new URL(urlImage);
     } catch (error) {
+      setError("Url inválida!");
     }
     
     // arrange tags
     setTags((tags) => {
-      return tags.split(",").map((item) => {return item.replace("#", "").trim().toLowerCase()})
+      return tags.split(",").map((item) => {return item.replace("#", "").trim().toLowerCase()});
     })
     
     if (!title || !urlImage || !content || !tags) return setError("Algo deu errado!");
@@ -64,6 +67,8 @@ const PostEdit = () => {
       userId: user.uid,
       userName: user.displayName
     }
+
+    editPost(post);
     
     navigate("/");
   }  
@@ -71,7 +76,7 @@ const PostEdit = () => {
   return (
     <section>
       <h1>PostEdit</h1>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleEditPost}>
         <fieldset className={styles.fieldset}>
           <label>
             <span>Título</span>

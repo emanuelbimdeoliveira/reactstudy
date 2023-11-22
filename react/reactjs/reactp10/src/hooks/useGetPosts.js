@@ -24,7 +24,6 @@ export const useGetPosts = (docCollection, search, uid, postId) => {
             } else if (uid) {
                 querySearch = await query(collectionRef, where("userId", "==", uid), orderBy("title", "asc"));
             } else if (postId) {
-                console.log(postId)
                 const docRef = await doc(db, docCollection, postId);
                 docSearch = await getDoc(docRef);
                 setDocuments(docSearch.data());
@@ -46,7 +45,6 @@ export const useGetPosts = (docCollection, search, uid, postId) => {
         
         useEffect(() => {
             getPost();
-            console.log(documents)
         }, [collection, query, docCollection])    
         
     return { getPost, documents, loading, error };

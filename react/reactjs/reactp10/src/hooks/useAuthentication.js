@@ -61,7 +61,6 @@ export const useAuthentication = () => {
         try {
             await signInWithEmailAndPassword(auth, userToLogin.email, userToLogin.password);
         } catch (error) {
-            console.log(error)
             if (error) {
                 setError("Algo deu errado.")
             } else if (error.includes("INVALID_LOGIN_CREDENTIALS")) {
