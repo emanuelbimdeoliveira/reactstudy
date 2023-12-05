@@ -13,7 +13,7 @@ const ToDoList = () => {
         <h2>Lista de Tarefas</h2>
         {state &&
             <ul>
-                {
+                {   
                     state.map((item) => (
                         <li key={item.taskId}><p>{item.taskName}</p> <button onClick={() => {dispatch({type: "DELETE", id: item.taskId})}}>Deletar</button></li>
                     ))
