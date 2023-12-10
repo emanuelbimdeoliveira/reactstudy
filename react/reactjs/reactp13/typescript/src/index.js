@@ -37,5 +37,37 @@ const functionName = (id, date) => {
         return `${id} quando for ${date}`;
     return `${id}`;
 };
-console.log(functionName("usuário", [45, 98]));
+console.log(functionName(Name.a, [45, 98]));
 console.log(functionName("usuário"));
+const functionNumbers = (nums) => {
+    return nums.n1;
+};
+console.log(functionNumbers({ n1: 2, n2: false }));
+// class
+class Car {
+    constructor(brand, color) {
+        this.brand = brand,
+            this.color = color;
+    }
+    console() {
+        console.log(this.brand);
+    }
+}
+const newCar = new Car("uno", "preto");
+newCar.console();
+class Car2 {
+    constructor(created, used) {
+        this.created = created,
+            this.used = used;
+    }
+    showUse() {
+        console.log(this.used);
+    }
+}
+const car2 = new Car2(1985, true);
+car2.showUse();
+// generics
+function dateOfToday(d) {
+    console.log(d);
+}
+dateOfToday([4, 5, 3]);
